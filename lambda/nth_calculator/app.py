@@ -1,4 +1,4 @@
-from algorithm import yellowstone_permutation_calculator
+from algorithm import calculate_yellowstone_permutation_integer
 
 # import the JSON utility package
 import json
@@ -22,7 +22,7 @@ def lambda_handler(event, context):
 
 # extract the two numbers from the Lambda service's event object
     # NOTE: n = 1 corresponds to first element in sequence
-    yellowstone_integer = yellowstone_permutation_calculator(int(event['n']) - 1)
+    yellowstone_integer = calculate_yellowstone_permutation_integer(int(event['n']))
 
 # write result and time to the DynamoDB table using the object we instantiated and save response in a variable
     response = table.put_item(
