@@ -1,10 +1,10 @@
 body {
     padding: 10px;
+    font-family: system-ui;
 }
 
 h1 {
     margin-top: 0;
-    font-family: system-ui;
 }
 
 form {
@@ -16,16 +16,13 @@ div {
 }
 
 label {
-    font-family: system-ui;
 }
 
 button {
-    font-family: system-ui;
     width: 140px;
 }
 
 input {
     color: #222629;
-    font-family: system-ui;
     width: 100px;
 }
