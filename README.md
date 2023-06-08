@@ -1,4 +1,4 @@
-Try at https://main.dkdq6lguvybor.amplifyapp.com/
+Try at https://main.d1xjk6ynccgx64.amplifyapp.com/
 
 A simple application made to calculate a term at the nth position in the Yellowstone sequence, described at https://rosettacode.org/wiki/Yellowstone_sequence.
 
