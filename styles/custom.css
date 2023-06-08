@@ -3,16 +3,18 @@ h1 {
     margin-left: 20px;
 }
 
+form {
+    font-size: 20px;
+}
+
 label {
     font-family: system-ui;
-    font-size: 20px;
     margin-left: 20px;
     margin-top: 20px;
 }
 
 button {
     font-family: system-ui;
-    font-size: 20px;
     margin-left: 30px;
     margin-top: 20px;
     width: 140px;
@@ -21,7 +23,6 @@ button {
 input {
     color: #222629;
     font-family: system-ui;
-    font-size: 20px;
     margin-left: 10px;
     margin-top: 20px;
     width: 100px;
