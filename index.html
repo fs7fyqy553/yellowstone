@@ -5,22 +5,16 @@
     <title>Yellowstone Permutation Integer Calculator</title>
     <link rel="stylesheet" href="./style.css">
     <script>
-        // callAPI function that takes the base and exponent numbers as parameters
         var callAPI = (n)=>{
-            // instantiate a headers object
             var myHeaders = new Headers();
-            // add content type header to object
             myHeaders.append("Content-Type", "application/json");
-            // using built in JSON utility package turn object to string and store in a variable
             var raw = JSON.stringify({n});
-            // create a JSON object with parameters for API call and store in a variable
             var requestOptions = {
                 method: 'POST',
                 headers: myHeaders,
                 body: raw,
                 redirect: 'follow'
             };
-            // make API call with parameters and use promises to get response
             fetch("https://7x9a61i6n3.execute-api.eu-west-2.amazonaws.com/production", requestOptions)
             .then(response => response.text())
             .then(result => alert(JSON.parse(result).body))
@@ -33,7 +27,6 @@
 	<form>
         <label>Choose n for Yellowstone Permutation Integer (n = 1 corresponds to first integer in sequence):</label>
         <input type="number" id="n", min="1", step="1">
-        <!-- set button onClick method to call function we defined passing input values as parameters -->
         <button type="button" onclick="callAPI(document.getElementById('n').value)">CALCULATE</button>
     </form>
 </body>
