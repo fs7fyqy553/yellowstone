@@ -1,8 +1,8 @@
-var callAPI = (n)=>{
-    var myHeaders = new Headers();
+const callAPI = (n)=>{
+    const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
-    var raw = JSON.stringify({n});
-    var requestOptions = {
+    const raw = JSON.stringify({n});
+    const requestOptions = {
         method: 'POST',
         headers: myHeaders,
         body: raw,
