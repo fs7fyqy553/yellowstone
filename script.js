@@ -19,6 +19,15 @@ function makeRequestOptions(n) {
     };
 }
 
+function getRenderElement() {
+    return document.getElementById("calculated-integer");
+}
+
+function renderCalculatedInteger(n, resultText) {
+    const renderElement = getRenderElement();
+    renderElement.textContent = `The term at position ${n} of the sequence is ${resultText.slice(-3, -1)}`;
+}
+
 async function getYellowstonePermutationInteger(n) {
     const requestOptions = makeRequestOptions(n);
     const response = await fetch(
@@ -32,6 +41,11 @@ function getChosenNValue() {
     return document.getElementById('n').value;
 }
 
+function clearRenderedInteger() {
+    const renderElement = getRenderElement();
+    renderElement.textContent = "";
+}
+
 function preventFormSubmission(event) {
     event.preventDefault();
 }
@@ -41,9 +55,10 @@ async function displayYellowstonePermutationInteger(event) {
     // to the first integer in the sequence.
     try {
         preventFormSubmission(event);
+        clearRenderedInteger();
         const n = getChosenNValue();
         const integer = await getYellowstonePermutationInteger(n);
-        alert(JSON.parse(integer).body);
+        renderCalculatedInteger(n, JSON.parse(integer).body);
     } catch (err) {
         console.log(err);
     }
