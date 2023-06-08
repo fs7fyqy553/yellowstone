@@ -38,3 +38,9 @@ async function displayYellowstonePermutationInteger(n) {
         console.log(err);
     }
 }
+
+const calculateButton = document.getElementById("calculate-button");
+calculateButton.addEventListener(
+    "click",
+    () => displayYellowstonePermutationInteger(document.getElementById('n').value)
+);
