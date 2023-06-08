@@ -28,10 +28,20 @@ async function getYellowstonePermutationInteger(n) {
     return response.text();
 }
 
-async function displayYellowstonePermutationInteger(n) {
+function getChosenNValue() {
+    return document.getElementById('n').value;
+}
+
+function preventFormSubmission(event) {
+    event.preventDefault();
+}
+
+async function displayYellowstonePermutationInteger(event) {
     // NOTE: n is the position of the integer in the Yellowstone sequence. n == 1 corresponds 
     // to the first integer in the sequence.
     try {
+        preventFormSubmission(event);
+        const n = getChosenNValue();
         const integer = await getYellowstonePermutationInteger(n);
         alert(JSON.parse(integer).body);
     } catch (err) {
@@ -39,8 +49,5 @@ async function displayYellowstonePermutationInteger(n) {
     }
 }
 
-const calculateButton = document.getElementById("calculate-button");
-calculateButton.addEventListener(
-    "click",
-    () => displayYellowstonePermutationInteger(document.getElementById('n').value)
-);
+const calculationForm = document.getElementById("calculation-form");
+calculationForm.addEventListener("submit", displayYellowstonePermutationInteger);
