@@ -10,7 +10,7 @@ now = strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())
 def lambda_handler(event, context):
 
     # NOTE: n = 1 corresponds to first element in sequence
-    yellowstone_integer = calculate_yellowstone_permutation_integer(int(event['n']))
+    yellowstone_integer, _ = calculate_yellowstone_permutation_integer(int(event['n']))
     response = table.put_item(
         Item={
             'ID': str(yellowstone_integer),
