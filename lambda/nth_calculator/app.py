@@ -19,8 +19,8 @@ def lambda_handler(event, context):
 
     if 'Item' in response:
         item = response['Item']
-        if 'as_python_list' in item:
-            memoised_sequence = item['as_python_list']
+        if 'python_list_field' in item:
+            memoised_sequence = item['python_list_field']['L']
             calculation_args.append(memoised_sequence)
 
     # NOTE: n = 1 corresponds to first element in sequence
@@ -29,7 +29,7 @@ def lambda_handler(event, context):
     _ = table.put_item(
         Item={
             'ID': 'memoised_sequence',
-            'as_python_list': memoised_sequence,
+            'python_list_field': {'L': memoised_sequence},
             'LatestGreetingTime': now
         }
     )
