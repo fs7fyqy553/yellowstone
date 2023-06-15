@@ -20,7 +20,8 @@ def lambda_handler(event, context):
     if 'Item' in response:
         item = response['Item']
         if 'python_list_field' in item:
-            memoised_sequence = item['python_list_field']['L']
+            stored_list = item['python_list_field']['L']
+            memoised_sequence = [int(term) for term in stored_list]
             calculation_args.append(memoised_sequence)
 
     # NOTE: n = 1 corresponds to first element in sequence
