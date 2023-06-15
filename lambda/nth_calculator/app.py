@@ -9,12 +9,28 @@ now = strftime("%a, %d %b %Y %H:%M:%S +0000", gmtime())
 
 def lambda_handler(event, context):
 
+    response = table.get_item(
+        Key={
+            'ID': 'memoised_sequence'
+        }
+    )
+
+    calculation_args = [int(event['n'])]
+
+    if 'Item' in response:
+        item = response['Item']
+        if 'as_python_list' in item:
+            memoised_sequence = item['as_python_list']
+            calculation_args.append(memoised_sequence)
+
     # NOTE: n = 1 corresponds to first element in sequence
-    yellowstone_integer, _ = calculate_yellowstone_permutation_integer(int(event['n']))
-    response = table.put_item(
+    yellowstone_integer, memoised_sequence = calculate_yellowstone_permutation_integer(*calculation_args)
+
+    _ = table.put_item(
         Item={
-            'ID': str(yellowstone_integer),
-            'LatestGreetingTime':now
+            'ID': 'memoised_sequence',
+            'as_python_list': memoised_sequence,
+            'LatestGreetingTime': now
         }
     )
     
